@@ -19,7 +19,6 @@ public:
     
 private slots:
     void on_LightThemeButton_clicked();
-    
     void on_DarkThemeButton_clicked();
     
 private:

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>184</width>
+    <height>164</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,47 +18,24 @@
     <widget class="QTabWidget" name="tabWidget">
      <widget class="QWidget" name="tabView">
       <attribute name="title">
-       <string>Page</string>
+       <string>View</string>
       </attribute>
-      <widget class="QRadioButton" name="LightThemeButton">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>150</y>
-         <width>107</width>
-         <height>26</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Light theme</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="DarkThemeButton">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>170</y>
-         <width>107</width>
-         <height>26</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Dark theme</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton">
-       <property name="geometry">
-        <rect>
-         <x>90</x>
-         <y>100</y>
-         <width>85</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0">
+        <widget class="QRadioButton" name="DarkThemeButton">
+         <property name="text">
+          <string>Dark theme</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QRadioButton" name="LightThemeButton">
+         <property name="text">
+          <string>Light theme</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </item>
