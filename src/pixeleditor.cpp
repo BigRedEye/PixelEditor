@@ -221,8 +221,8 @@ void PixelEditor::updateStatusBar()
     if ( (img = currentImage()) )
     {
         img->getMouseAndZoom(mousePos, zoom);
-        ui->statusBar->showMessage("x: " + QString::number(mousePos.x()) + 
-                                   ", y: " + QString::number(mousePos.y()) + 
+        ui->statusBar->showMessage("x: " + QString::number(mousePos.x() + 1) + 
+                                   ", y: " + QString::number(mousePos.y() + 1) + 
                                    ", zoom: " + QString::number(int(zoom * 100)) + "%");
     }
 }

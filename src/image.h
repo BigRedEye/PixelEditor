@@ -7,6 +7,8 @@
 #include <QWheelEvent>
 #include <QScrollArea>
 #include <QScrollBar>
+#include <QUndoView>
+#include <QUndoStack>
 
 class Image : public QWidget
 {
@@ -20,6 +22,7 @@ public:
     bool loadImage(const QString &path);
     void setSize(const QSize &size);
     void getMouseAndZoom(QPoint &mousePos, long double &zoom);
+    QPoint mouseFromGlobal();
     
     void setScale(long double scale);
     void zoomIn();
@@ -41,6 +44,7 @@ private:
     QLabel *m_pixLabel;
     QScrollArea *m_area;
     int currentScaleIdx;
+    QUndoStack *m_undoStack;
     
     static constexpr long double zoomByScrollCoeff = 1.25;
     
@@ -49,6 +53,7 @@ signals:
     void mouseMoved(int x, int y);
 public slots:
     void mouseMoveEvent(QMouseEvent *ev);
+    void mousePressEvent(QMouseEvent *ev);
     void wheelEvent(QWheelEvent *ev);
     void redraw(int value = 0);
 };

@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QScrollBar>
 #include <QCursor>
+#include <cmath>
 
 //long double Image::zoomByScrollCoeff;
 
@@ -117,6 +118,11 @@ void Image::mouseMoveEvent(QMouseEvent *ev)
     ev->accept();
 }
 
+void Image::mousePressEvent(QMouseEvent *ev)
+{
+    
+}
+
 void Image::wheelEvent(QWheelEvent *ev)
 {
     static int delta = 0;
@@ -137,7 +143,7 @@ void Image::wheelEvent(QWheelEvent *ev)
         }
         emit mouseMoved(ev->x(), ev->y());
     }
-}
+}   
 
 void Image::setSize(const QSize &size)
 {
@@ -153,8 +159,20 @@ void Image::setScale(long double scale)
 
 void Image::getMouseAndZoom(QPoint &mousePos, long double &zoom)
 {
-    mousePos = this->mapFromGlobal(QCursor::pos());
+    mousePos = mouseFromGlobal();
     zoom = m_scale;
+}
+
+QPoint Image::mouseFromGlobal()
+{
+    QPoint mousePos(m_area->horizontalScrollBar()->value() / m_scale, 
+                    m_area->verticalScrollBar()->value() / m_scale);
+    if (m_pixLabel)
+    {
+        QPoint mouseOnLabel = m_pixLabel->mapFromGlobal(QCursor::pos());
+        mousePos += QPoint(mouseOnLabel.x() / m_scale, mouseOnLabel.y() / m_scale);
+    }
+    return mousePos;
 }
 
 long double Image::getScale() const
